@@ -1,0 +1,13 @@
+.btn-wrapper {
+  border: 1px solid #ddd;
+  display: inline-block;
+  padding: 0 3px;
+  border-radius: 3px;
+  line-height: 26px;
+  font-size: 12px;
+}
+
+/* for test：对内部的a标签的样式覆盖无效 */
+.btn-wrapper a {
+  color: blue;
+}
