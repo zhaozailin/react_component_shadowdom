@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 import './index.css';
-import x from  './index.shadow';
-console.log(x);
+import shadowcss from  './index.shadowcss';
+
 class Inner extends React.Component {
   render() {
     const { children, root } = this.props;
@@ -22,7 +22,7 @@ export default (props) => {
 
     // 设置样式
     const sheet = new CSSStyleSheet();
-    sheet.replaceSync('a { color: red; }');
+    sheet.replaceSync(shadowcss);
     root.adoptedStyleSheets = [sheet];
   }, [])
 
