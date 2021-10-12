@@ -5,6 +5,8 @@
   border-radius: 3px;
   line-height: 26px;
   font-size: 12px;
+  cursor: pointer;
+  background: #ddd;
 }
 
 /* for test：对内部的a标签的样式覆盖无效 */

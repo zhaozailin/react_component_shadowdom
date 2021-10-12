@@ -1,15 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
+import Inner from './inner';
 import './index.css';
 import shadowcss from  './index.shadowcss';
-
-class Inner extends React.Component {
-  render() {
-    const { children, root } = this.props;
-    return ReactDOM.createPortal(<a>{children}</a>, root);
-  }
-}
 
 export default (props) => {
   const {children, className, style} = props;
@@ -17,6 +10,7 @@ export default (props) => {
   const ref = useRef();
 
   useEffect(() => {
+    // 使用组件的最外层div作为shadowDOM根节点
     const root = ref.current.attachShadow({ mode: "closed" });
     setRoot(root);
 
@@ -29,7 +23,7 @@ export default (props) => {
   return (
     // 最外层是不隔离的，能访问的，可用于自定义样式，内部处理shadowDOM中，处于隔离状态
     <div ref={ref} className={classnames('btn-wrapper', className)} style={style}>
-      {root && <Inner root={root}>{children}</Inner>}
+      {root && <Inner root={root} {...props}>{children}</Inner>}
     </div>
   )
 }
